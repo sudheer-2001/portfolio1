@@ -91,7 +91,7 @@ form.addEventListener('submit', function(e) {
     })
     .then(data => {
         console.log(data);
-        responseMessage.innerText = "Contact Details Sent Successfully!";
+        responseMessage.innerText = "Thank You! Your Message is Sent!";
         form.reset(); 
     })
     .catch(error => {
