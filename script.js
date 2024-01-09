@@ -91,13 +91,11 @@ form.addEventListener('submit', function(e) {
     })
     .then(data => {
         console.log(data);
-        // Update the response message on the frontend
         responseMessage.innerText = "Your details have been successfully sent!";
+        form.reset(); 
     })
     .catch(error => {
         console.error('Error:', error);
-        // Handle any errors that occurred during the fetch request
         responseMessage.innerText = "There was an error sending your details. Please try again.";
     });
 });
-
