@@ -72,14 +72,32 @@ $(document).ready(function(){
     });
 });
 
+
 var form = document.getElementById("sheetdb-form");
+var responseMessage = document.getElementById("responseMessage");
+
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    console.log("Form submitted!");
     fetch(form.action, {
         method: "POST",
         body: new FormData(document.getElementById("sheetdb-form"))
-    }).then(
-        response => response.json()
-    );
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
+    .then(data => {
+        console.log(data);
+        // Update the response message on the frontend
+        responseMessage.innerText = "Your details have been successfully sent!";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any errors that occurred during the fetch request
+        responseMessage.innerText = "There was an error sending your details. Please try again.";
+    });
 });
+
