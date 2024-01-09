@@ -75,6 +75,7 @@ $(document).ready(function(){
 var form = document.getElementById("sheetdb-form");
 form.addEventListener('submit', function(e) {
     e.preventDefault();
+    console.log("Form submitted!");
     fetch(form.action, {
         method: "POST",
         body: new FormData(document.getElementById("sheetdb-form"))
